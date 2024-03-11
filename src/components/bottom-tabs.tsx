@@ -34,7 +34,7 @@ export const BottomNavigationAccessoriesShowcase = (): React.ReactElement => {
       <BottomNavigation style={styles.bottomNavigation} {...bottomState}>
         <BottomNavigationTab icon={SearchIcon} />
         <BottomNavigationTab icon={HeartIcon} />
-        <BottomNavigationTab icon={SettingsIcon} />
+        {/* <BottomNavigationTab icon={SettingsIcon} /> */}
       </BottomNavigation>
     </>
   );
