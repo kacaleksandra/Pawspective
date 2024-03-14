@@ -1,5 +1,5 @@
 import { Layout } from "@ui-kitten/components";
-import { BottomNavigationAccessoriesShowcase } from "./components/bottom-tabs";
+import { BottomTabBar } from "./components/bottom-tabs";
 
 const DefaultLayout = ({ children }) => {
   return (
@@ -10,7 +10,6 @@ const DefaultLayout = ({ children }) => {
       >
         {children}
       </Layout>
-      <BottomNavigationAccessoriesShowcase />
     </>
   );
 };

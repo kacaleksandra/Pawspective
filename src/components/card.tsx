@@ -1,6 +1,7 @@
 import { StyleSheet, View, ViewProps } from "react-native";
 import { Card, Layout, Text } from "@ui-kitten/components";
 import { Image } from "react-native";
+import { BreedImage } from "../screens/search-breeds";
 
 interface HeaderProps extends ViewProps {
   breedName: string;
@@ -18,7 +19,7 @@ interface CardAccessoriesProps extends ViewProps {
   headerText: string;
   contentText: string;
   breedName: string;
-  breedImage: string;
+  breedImage: BreedImage;
 }
 
 export const CardAccessoriesShowcase = (
@@ -28,7 +29,11 @@ export const CardAccessoriesShowcase = (
     <Layout style={styles.topContainer} level="1">
       <Card style={styles.card} header={() => <Header {...props} />}>
         <View style={styles.imageContainer}>
-          <Image source={{ uri: props.breedImage }} style={styles.image} />
+          <Image
+            source={{ uri: props.breedImage.url }}
+            style={styles.image}
+            resizeMode="contain"
+          />
         </View>
         <Text style={styles.text} category="p1">
           {props.contentText}
@@ -47,16 +52,17 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     margin: 2,
+    marginTop: 10,
   },
   header: {
     padding: 20,
     paddingLeft: 35,
   },
   text: {
-    padding: 20,
+    padding: 5,
   },
   image: {
-    width: 250,
+    width: 289,
     height: 250,
   },
   imageContainer: {

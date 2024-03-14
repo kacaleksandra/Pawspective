@@ -1,12 +1,15 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { SearchBreedsScreen } from "../screens/search-breeds";
+import { FavouritesScreen } from "../screens/favourites";
 import {
   BottomNavigation,
-  BottomNavigationProps,
   BottomNavigationTab,
   Icon,
   IconElement,
 } from "@ui-kitten/components";
+import { StyleSheet } from "react-native";
+
+const Tab = createBottomTabNavigator();
 
 const SearchIcon = (props): IconElement => (
   <Icon {...props} name="search-outline" />
@@ -16,32 +19,38 @@ const HeartIcon = (props): IconElement => (
   <Icon {...props} name="heart-outline" />
 );
 
-const SettingsIcon = (props): IconElement => (
-  <Icon {...props} name="settings-outline" />
-);
-
-const useBottomNavigationState = (initialState = 0): BottomNavigationProps => {
-  const [selectedIndex, setSelectedIndex] = React.useState(initialState);
-  return { selectedIndex, onSelect: setSelectedIndex };
-};
-
-export const BottomNavigationAccessoriesShowcase = (): React.ReactElement => {
-  const topState = useBottomNavigationState();
-  const bottomState = useBottomNavigationState();
-
+function BottomTabBar() {
   return (
-    <>
-      <BottomNavigation style={styles.bottomNavigation} {...bottomState}>
-        <BottomNavigationTab icon={SearchIcon} />
-        <BottomNavigationTab icon={HeartIcon} />
-        {/* <BottomNavigationTab icon={SettingsIcon} /> */}
-      </BottomNavigation>
-    </>
+    <Tab.Navigator tabBar={(props) => <BottomTabBarComponent {...props} />}>
+      <Tab.Screen
+        name="Home"
+        component={SearchBreedsScreen}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={FavouritesScreen}
+        options={{ headerShown: false }}
+      />
+    </Tab.Navigator>
   );
-};
+}
+
+const BottomTabBarComponent = ({ navigation, state }) => (
+  <BottomNavigation
+    selectedIndex={state.index}
+    onSelect={(index) => navigation.navigate(state.routeNames[index])}
+    style={styles.bottomNavigation}
+  >
+    <BottomNavigationTab icon={SearchIcon} />
+    <BottomNavigationTab icon={HeartIcon} />
+  </BottomNavigation>
+);
 
 const styles = StyleSheet.create({
   bottomNavigation: {
     marginVertical: 8,
   },
 });
+
+export { BottomTabBar };

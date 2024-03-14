@@ -1,4 +1,3 @@
-import React from "react";
 import { StyleSheet } from "react-native";
 import {
   Icon,
@@ -8,6 +7,7 @@ import {
   Select,
   SelectItem,
 } from "@ui-kitten/components";
+import { ReactElement, useState } from "react";
 
 const StarIcon = (props): IconElement => <Icon {...props} name="star" />;
 
@@ -15,10 +15,10 @@ const ForwardIcon = (props): IconElement => (
   <Icon {...props} name="arrow-ios-forward" />
 );
 
-export const SelectAccessoriesShowcase = (): React.ReactElement => {
-  const [selectedIndex, setSelectedIndex] = React.useState<
-    IndexPath | IndexPath[]
-  >(new IndexPath(0));
+export const SelectAccessoriesShowcase = (): ReactElement => {
+  const [selectedIndex, setSelectedIndex] = useState<IndexPath | IndexPath[]>(
+    new IndexPath(0)
+  );
 
   return (
     <Layout style={styles.container} level="1">

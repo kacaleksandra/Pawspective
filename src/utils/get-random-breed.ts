@@ -12,7 +12,6 @@ async function getRandomBreed() {
     const randomBreed = breeds[randomIndex];
     return randomBreed;
   } catch (error) {
-    console.error("Error fetching breeds:", error.message);
     throw error;
   }
 }
