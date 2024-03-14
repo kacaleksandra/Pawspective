@@ -49,7 +49,7 @@ const BottomTabBarComponent = ({ navigation, state }) => (
 
 const styles = StyleSheet.create({
   bottomNavigation: {
-    marginVertical: 8,
+    marginVertical: 3,
   },
 });
 

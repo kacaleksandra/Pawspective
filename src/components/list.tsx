@@ -2,6 +2,7 @@ import { ListRenderItemInfo, StyleSheet, View } from "react-native";
 import { Card, List, Text } from "@ui-kitten/components";
 import { useState, useEffect } from "react";
 import { useFavoriteBreeds } from "../contexts/FavoriteBreedsContext";
+import { MoreButton } from "./more-button";
 
 export const ListWithDescription = (data): React.ReactElement => {
   const { favoriteBreeds } = useFavoriteBreeds();
@@ -17,7 +18,10 @@ export const ListWithDescription = (data): React.ReactElement => {
   ): React.ReactElement {
     return (
       <View {...headerProps}>
-        <Text category="h6">{info.item.breed.name}</Text>
+        <View className="flex flex-row justify-between items-center">
+          <Text category="h6">{info.item.breed.name}</Text>
+          <MoreButton breed={info.item.breed} />
+        </View>
       </View>
     );
   }
@@ -40,12 +44,14 @@ export const ListWithDescription = (data): React.ReactElement => {
   return (
     <>
       {breeds.length !== 0 ? (
-        <List
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}
-          data={breeds}
-          renderItem={renderItem}
-        />
+        <View className="mt-10">
+          <List
+            style={styles.container}
+            contentContainerStyle={styles.contentContainer}
+            data={breeds}
+            renderItem={renderItem}
+          />
+        </View>
       ) : (
         <Text>No favourite breeds</Text>
       )}
@@ -55,12 +61,11 @@ export const ListWithDescription = (data): React.ReactElement => {
 
 const styles = StyleSheet.create({
   container: {
-    maxHeight: "100%",
-    paddingTop: 50,
+    height: "100%",
   },
   contentContainer: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
+    paddingHorizontal: 15,
+    marginBottom: 20,
   },
   item: {
     marginVertical: 4,

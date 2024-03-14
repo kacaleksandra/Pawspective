@@ -12,6 +12,7 @@
     "@eva-design/eva": "^2.2.0",
     "@react-navigation/bottom-tabs": "^6.5.19",
     "@react-navigation/native": "^6.1.16",
+    "@react-navigation/stack": "^6.3.28",
     "@thatapicompany/thecatapi": "^1.0.2",
     "@types/react": "~18.2.45",
     "@ui-kitten/components": "^5.3.1",

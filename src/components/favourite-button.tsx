@@ -24,7 +24,7 @@ export const FavouriteButton = (breed) => {
     } else {
       setIsFavourite(false);
     }
-  }, [breed]);
+  }, [breed, setIsFavourite, favoriteBreeds]);
 
   const handlePress = () => {
     if (isFavourite) {
