@@ -3,6 +3,7 @@ import { Card, List, Text } from "@ui-kitten/components";
 import { useState, useEffect } from "react";
 import { useFavoriteBreeds } from "../contexts/FavoriteBreedsContext";
 import { MoreButton } from "./more-button";
+import { RubbishButton } from "./rubbish-button";
 
 export const ListWithDescription = (data): React.ReactElement => {
   const { favoriteBreeds } = useFavoriteBreeds();
@@ -18,9 +19,14 @@ export const ListWithDescription = (data): React.ReactElement => {
   ): React.ReactElement {
     return (
       <View {...headerProps}>
-        <View className="flex flex-row justify-between items-center">
-          <Text category="h6">{info.item.breed.name}</Text>
-          <MoreButton breed={info.item.breed} />
+        <View className="flex flex-row items-center ">
+          <View className="w-1/2">
+            <Text category="h6">{info.item.breed.name}</Text>
+          </View>
+          <View className="flex flex-row-reverse ">
+            <RubbishButton breed={info.item.breed} />
+            <MoreButton breed={info.item.breed} />
+          </View>
         </View>
       </View>
     );

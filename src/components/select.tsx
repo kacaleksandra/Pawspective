@@ -1,21 +1,8 @@
 import { StyleSheet } from "react-native";
-import {
-  Icon,
-  IconElement,
-  IndexPath,
-  Layout,
-  Select,
-  SelectItem,
-} from "@ui-kitten/components";
-import { ReactElement, useState } from "react";
+import { IndexPath, Layout, Select, SelectItem } from "@ui-kitten/components";
+import { useState } from "react";
 
-const StarIcon = (props): IconElement => <Icon {...props} name="star" />;
-
-const ForwardIcon = (props): IconElement => (
-  <Icon {...props} name="arrow-ios-forward" />
-);
-
-export const SelectAccessoriesShowcase = (): ReactElement => {
+export const SelectSimpleUsageShowcase = (): React.ReactElement => {
   const [selectedIndex, setSelectedIndex] = useState<IndexPath | IndexPath[]>(
     new IndexPath(0)
   );
@@ -23,26 +10,12 @@ export const SelectAccessoriesShowcase = (): ReactElement => {
   return (
     <Layout style={styles.container} level="1">
       <Select
-        label="Label"
-        caption="Caption"
         selectedIndex={selectedIndex}
         onSelect={(index) => setSelectedIndex(index)}
       >
-        <SelectItem
-          title="Option 1"
-          accessoryLeft={StarIcon}
-          accessoryRight={ForwardIcon}
-        />
-        <SelectItem
-          title="Option 2"
-          accessoryLeft={StarIcon}
-          accessoryRight={ForwardIcon}
-        />
-        <SelectItem
-          title="Option 3"
-          accessoryLeft={StarIcon}
-          accessoryRight={ForwardIcon}
-        />
+        <SelectItem title="Option 1" />
+        <SelectItem title="Option 2" />
+        <SelectItem title="Option 3" />
       </Select>
     </Layout>
   );

@@ -8,6 +8,7 @@ import {
   IconElement,
 } from "@ui-kitten/components";
 import { StyleSheet } from "react-native";
+import { AllBreedsScreen } from "../screens/all-breeds/page";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +20,8 @@ const HeartIcon = (props): IconElement => (
   <Icon {...props} name="heart-outline" />
 );
 
+const EyeIcon = (props): IconElement => <Icon {...props} name="eye-outline" />;
+
 function BottomTabBar() {
   return (
     <Tab.Navigator tabBar={(props) => <BottomTabBarComponent {...props} />}>
@@ -28,7 +31,12 @@ function BottomTabBar() {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Settings"
+        name="All breeds"
+        component={AllBreedsScreen}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Favorites"
         component={FavouritesScreen}
         options={{ headerShown: false }}
       />
@@ -43,6 +51,7 @@ const BottomTabBarComponent = ({ navigation, state }) => (
     style={styles.bottomNavigation}
   >
     <BottomNavigationTab icon={SearchIcon} />
+    <BottomNavigationTab icon={EyeIcon} />
     <BottomNavigationTab icon={HeartIcon} />
   </BottomNavigation>
 );

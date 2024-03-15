@@ -7,8 +7,6 @@ import { CatBreed } from "../types/breed";
 import { BreedImage } from "../screens/search-breeds";
 
 interface HeaderProps extends ViewProps {
-  // breedName: string;
-  // headerText: string;
   breed: CatBreed;
 }
 
